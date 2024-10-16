@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "authentication",
+    "flux",
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,8 @@ ROOT_URLCONF = "bookcritique.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / 'templates'],  # Basic templates folder
+
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -123,4 +125,8 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Specify custom user model to django
 AUTH_USER_MODEL = "authentication.User"
+
+# Redirect a user to the login page
+LOGIN_URL = 'login'
