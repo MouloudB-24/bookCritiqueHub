@@ -1,7 +1,11 @@
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import View
 
 
-@login_required
-def home(request):
-    return render(request, 'flux/home.html')
+class HomePage(LoginRequiredMixin, View):
+    template_name = 'flux/home.html'
+    login_url = 'login'
+
+    def get(self, request):
+        return render(request, self.template_name)

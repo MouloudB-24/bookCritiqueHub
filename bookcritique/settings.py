@@ -130,3 +130,7 @@ AUTH_USER_MODEL = "authentication.User"
 
 # Redirect a user to the login page
 LOGIN_URL = 'login'
+
+LOGIN_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL = LOGIN_URL
