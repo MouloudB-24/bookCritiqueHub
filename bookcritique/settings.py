@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "authentication",
     "flux",
+    "posts",
+    "subscriptions",
 ]
 
 MIDDLEWARE = [
@@ -133,3 +135,9 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 
 LOGOUT_REDIRECT_URL = LOGIN_URL
+
+# Link to media files
+MEDIA_URL = '/media/'
+
+# Media storage folder
+MEDIA_ROOT = BASE_DIR / 'media/'
