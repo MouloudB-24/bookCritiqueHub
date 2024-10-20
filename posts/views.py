@@ -2,13 +2,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render, get_object_or_404
 from django.views import View
 
-from bookcritique.settings import LOGIN_REDIRECT_URL
-from posts.models import Ticket
-from . import forms
 from posts.models import Ticket, Review
+from . import forms
 
 
-class PostsPage(LoginRequiredMixin, View):
+class PostsView(LoginRequiredMixin, View):
     template_name = 'posts/posts.html'
     login_url = 'login'
 

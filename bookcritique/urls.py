@@ -32,7 +32,7 @@ urlpatterns = [
     path('signup/', authentication.views.SignupPageView.as_view(), name='signup'),
     path('ticket/', posts.views.TicketView.as_view(), name='ticket'),
     path('ticket/<int:ticket_id>/review/', posts.views.ReviewView.as_view(), name='review'),
-    path('posts/', posts.views.PostsPage.as_view(), name='posts'),
+    path('posts/', posts.views.PostsView.as_view(), name='posts'),
     path('home/', HomePage.as_view(), name='home'),
 ]
 
