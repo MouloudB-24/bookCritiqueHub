@@ -1,0 +1,11 @@
+body {
+    font-family: arial;
+}
+
+.authentication-page {
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    gap: 200px;
+}
+

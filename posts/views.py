@@ -1,9 +1,21 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.views import View
 
 from bookcritique.settings import LOGIN_REDIRECT_URL
+from posts.models import Ticket
 from . import forms
+from posts.models import Ticket, Review
+
+
+class PostsPage(LoginRequiredMixin, View):
+    template_name = 'posts/posts.html'
+    login_url = 'login'
+
+    def get(self, request):
+        tickets = Ticket.objects.filter(uploader=request.user)
+        reviews = Review.objects.filter(user=request.user)
+        return render(request, self.template_name, context={'tickets': tickets, 'reviews': reviews})
 
 
 class TicketView(LoginRequiredMixin, View):
@@ -21,6 +33,27 @@ class TicketView(LoginRequiredMixin, View):
             ticket = form.save(commit=False)
             ticket.uploader = request.user
             ticket.save()
-            return redirect(LOGIN_REDIRECT_URL)
+            return redirect('posts')
         return render(request, self.template_name, context={'form': form})
 
+
+class ReviewView(LoginRequiredMixin, View):
+    template_name = 'posts/review.html'
+    form_class = forms.ReviewForm
+
+    def get(self, request, ticket_id):
+        form = self.form_class()
+        ticket = get_object_or_404(Ticket, pk=ticket_id)
+        return render(request, self.template_name, context={'form': form, 'ticket': ticket})
+
+    def post(self, request, ticket_id):
+        form = self.form_class(request.POST, request.FILES)
+        ticket = get_object_or_404(Ticket, pk=ticket_id)
+
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.ticket = ticket
+            review.save()
+            return redirect('posts')
+        return render(request, self.template_name, context={'form': form, 'ticket': ticket})

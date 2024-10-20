@@ -1,12 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div>
-        <h3>Flux</h3>
-        <h3>Posts</h3>
-        <h3>Abonnements</h3>
-        <h3> <a href="">Se deconnecter</a></h3>
-    </div>
+    <h2>Vos posts</h2>
     {% for ticket in tickets %}
         <p>{{ ticket.data_created }}</p>
         <h3>{{ ticket.title }}</h3>
@@ -15,7 +10,7 @@
             <img src="{{ ticket.image.url }}" alt="{{ ticket.title }}">
         {% endif %}
     {% endfor %}
-    {% for review in reviews %}
+     {% for review in reviews %}
         <p>{{ review.time_created }}</p>
         <h3>{{ review.headline }}</h3>
         <p>{{ review.body }}</p>
