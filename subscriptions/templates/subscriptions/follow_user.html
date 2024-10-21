@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Vos abonnements</h2>
+
+    <!-- Section pour suivre d'autres utilisateur -->
+    <h3>Suivre d'autres utilisateurs</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <!-- Séction pour afficher les abonnements -->
+    <h3>Abonnements</h3>
+        {% for follow in user.following.all %}
+            {{ follow.followed_user.username }}
+        {% empty %}
+            <p>Vous ne suivez encore personne !</p>
+        {% endfor %}
+
+    <!-- Séction pour afficher les abonnés -->
+    <h3>Abonnés</h3>
+    {% for follower in user.followers.all %}
+        {{ follower.user.username }}
+    {% empty %}
+        <p>Vous n'avez pas encore d'abonnés !</p>
+    {% endfor %}
+
+{% endblock content %}

@@ -21,6 +21,7 @@ from django.urls import path
 
 import authentication.views
 import posts.views
+import subscriptions.views
 from flux.views import HomePage
 
 urlpatterns = [
@@ -33,6 +34,8 @@ urlpatterns = [
     path('ticket/', posts.views.TicketView.as_view(), name='ticket'),
     path('ticket/<int:ticket_id>/review/', posts.views.ReviewView.as_view(), name='review'),
     path('posts/', posts.views.PostsView.as_view(), name='posts'),
+    path('subscriptions/', subscriptions.views.SubscriptionsView.as_view(), name='subscriptions'),
+    path('follow/', subscriptions.views.FollowUserView.as_view(), name='following'),
     path('home/', HomePage.as_view(), name='home'),
 ]
 
