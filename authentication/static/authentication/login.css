@@ -1,0 +1,56 @@
+
+
+div p {
+    margin-bottom: 20px;
+    font-size: 1em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type='text'], input[type='password'], button {
+    width: 30%;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+button[type='submit'] {
+    margin-left: auto;
+    margin-bottom: 50px;
+    display: block;
+    background-color: #1d3030;
+    color: #ffffe6;
+    font-size: 16px;
+    padding: 7px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+
+button[type='submit']:hover {
+   background-color: #2a4747;
+   color: white;
+}
+
+#message {
+    font-size: 0.9em;
+}
+
+a {
+    color: #1d3030;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.authentication-page p.connect-title {
+    margin-right: 100px;
+}
