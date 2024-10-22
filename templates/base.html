@@ -15,7 +15,12 @@
             {% endif %}
             {% if user.is_authenticated %}
                 <p>Salut, {{ user }} </p>
-                <p><a href="">Profil</a></p>
+                {% if user.profile_photo %}
+                    <img class="avatar" src={{ user.profile_photo.url }}>
+                {% else %}
+                    <img class="avatar" src="{% static 'images/LitReview.png' %}">
+                {% endif %}
+                <p><a href="{% url 'upload_profile_photo' %}">Photo de profil</a></p>
                 <p><a href="{% url 'ticket' %}">Créer un ticket</a></p>
                 <p><a href="{% url 'ticket_review' %}">Créer une critique</a></p>
                 <p><a href="{% url 'posts' %}">Posts</a></p>

@@ -60,4 +60,17 @@ class PasswordChangeDone(PasswordChangeDoneView):
     template_name = 'authentication/password_change_done.html'
 
 
+class UploadProfilePhoto(View):
+    template_name = 'authentication/upload_profile_photo.html'
+
+    def get(self, request):
+        form = forms.UploadProfilePhotoForm(instance=request.user)
+        return render(request, self.template_name, context={'form': form})
+
+    def post(self, request):
+        form = forms.UploadProfilePhotoForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect(LOGIN_REDIRECT_URL)
+        return render(request, self.template_name, context={'form': form})
 

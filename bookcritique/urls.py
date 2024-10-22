@@ -37,6 +37,7 @@ urlpatterns = [
     path('posts/', posts.views.PostsView.as_view(), name='posts'),
     path('subscriptions/', subscriptions.views.SubscriptionsView.as_view(), name='subscriptions'),
     path('follow/', subscriptions.views.FollowUserView.as_view(), name='following'),
+    path('profile-photo/upload', authentication.views.UploadProfilePhoto.as_view(), name='upload_profile_photo'),
     path('home/', HomePage.as_view(), name='home'),
 ]
 

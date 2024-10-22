@@ -7,9 +7,15 @@ a.logo {
     font-size: 30px;
 }
 
+.avatar {
+    max-width: 100%;
+    height: auto;
+     margin-bottom: 50px;
+}
+
 .sidebar {
     height: 100%;
-    width: 220px;
+    width: 230px;
     position: fixed;
     z-index: 1;
     top: 0;

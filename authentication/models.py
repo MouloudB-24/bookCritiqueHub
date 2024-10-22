@@ -3,6 +3,7 @@ from django.db import models
 
 
 class User(AbstractUser):
+    profile_photo = models.ImageField(verbose_name='Photo de profile')
     bio = models.TextField(blank=True)
 
     follows = models.ManyToManyField('self',
