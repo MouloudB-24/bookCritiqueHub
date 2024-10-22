@@ -1,12 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div>
-        <h3>Flux</h3>
-        <h3>Posts</h3>
-        <h3>Abonnements</h3>
-        <h3> <a href="">Se deconnecter</a></h3>
-    </div>
     {% for ticket in tickets %}
         <p>{{ ticket.data_created }}</p>
         <h3>{{ ticket.title }}</h3>

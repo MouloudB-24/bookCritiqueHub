@@ -55,3 +55,28 @@ class ReviewView(LoginRequiredMixin, View):
             review.save()
             return redirect('posts')
         return render(request, self.template_name, context={'form': form, 'ticket': ticket})
+
+
+class TicketReviewView(LoginRequiredMixin, View):
+    template_name = 'posts/ticket_review.html'
+    ticket_form = forms.TicketForm
+    review_form = forms.ReviewForm
+
+    def get(self, request):
+        ticket_form = self.ticket_form()
+        review_form = self.review_form()
+        return render(request, self.template_name, context={'ticket_form': ticket_form, 'review_form': review_form})
+
+    def post(self, request):
+        ticket_form = self.ticket_form(request.POST)
+        review_form = self.review_form(request.POST, request.FILES)
+        if any([ticket_form.is_valid(), review_form.is_valid()]):
+            ticket = ticket_form.save(commit=False)
+            ticket.uploader = request.user
+            ticket.save()
+            review = review_form.save(commit=False)
+            review.user = request.user
+            review.save()
+            return redirect('posts')
+        return render(request, self.template_name, context={'ticket_form': ticket_form, 'review_form': review_form})
+

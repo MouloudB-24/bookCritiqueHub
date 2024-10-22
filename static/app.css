@@ -1,0 +1,51 @@
+html {
+    font-family: Arial;
+}
+
+
+.sidebar {
+    height: 100%;
+    width: 220px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #1d3030;
+    color:  #ffffe6;
+    overflow-x: hidden;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sidebar p {
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 15px;
+}
+
+.sidebar a {
+   text-decoration: none;
+   color: #ffffe6;
+}
+
+.sidebar a:hover {
+   color: #1d3030;
+   background-color: #ffffe6;
+}
+
+#logo {
+    display: block;
+    margin: auto;
+    bottom: 0px;
+    width: 50px:
+    height: auto;
+}
+
+/* Style page content */
+.main {
+    margin-left: 240px;
+    padding: 20px;
+    height: auto;
+}
+

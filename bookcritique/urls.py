@@ -33,6 +33,7 @@ urlpatterns = [
     path('signup/', authentication.views.SignupPageView.as_view(), name='signup'),
     path('ticket/', posts.views.TicketView.as_view(), name='ticket'),
     path('ticket/<int:ticket_id>/review/', posts.views.ReviewView.as_view(), name='review'),
+    path('ticket/review', posts.views.TicketReviewView.as_view(), name='ticket_review'),
     path('posts/', posts.views.PostsView.as_view(), name='posts'),
     path('subscriptions/', subscriptions.views.SubscriptionsView.as_view(), name='subscriptions'),
     path('follow/', subscriptions.views.FollowUserView.as_view(), name='following'),

@@ -141,3 +141,6 @@ MEDIA_URL = '/media/'
 
 # Media storage folder
 MEDIA_ROOT = BASE_DIR / 'media/'
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']

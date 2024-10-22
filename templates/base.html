@@ -3,15 +3,26 @@
 <html lang="fr">
     <hear>
         <title>LITReview</title>
-        <link rel="stylesheet" href="{% static 'authentication/styles.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'app.css' %}">
     </hear>
     <body>
-        <h1>LITReview</h1>
-        {% block content %}
-        {% endblock content %}
+        <div class="sidebar">
+            <h1>LitRiew</h1>
+            {% if user.is_authenticated %}
+                <p>Salut, {{ user }} </p>
+                <p><a href="">Profil</a></p>
+                <p><a href="{% url 'ticket' %}">Demander une critique</a></p>
+                <p><a href="{% url 'ticket_review' %}">Créer une critique</a></p>
+                <p><a href="{% url 'posts' %}">Posts</a></p>
+                <p><a href="{% url 'subscriptions' %}">Abonnements</a></p>
+                <p><a href="{% url 'logout' %}">Se déconnecté</a></p>
+            <!--/*<img id="logo" src="{% static 'images/LitReview.png' %}" alt="">*/ -->
+            {% endif %}
 
-        {% if user.is_authenticated %}
-            <p>Vous êtes connecte en tant {{ request.user }} <a href="{% url 'logout' %}">Se déconnecté</a></p>
-        {% endif %}
+        </div>
+        <div class="main">
+            {% block content %}{% endblock content %}
+        </div>
     </body>
 </html>
