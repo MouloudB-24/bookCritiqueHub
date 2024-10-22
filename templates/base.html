@@ -5,6 +5,7 @@
         <title>LITReview</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{% static 'app.css' %}">
+        <link rel="stylesheet" href="{% static 'posts/ticket.css' %}">
     </hear>
     <body>
         <div class="sidebar">
@@ -12,7 +13,7 @@
             {% if user.is_authenticated %}
                 <p>Salut, {{ user }} </p>
                 <p><a href="">Profil</a></p>
-                <p><a href="{% url 'ticket' %}">Demander une critique</a></p>
+                <p><a href="{% url 'ticket' %}">Créer un ticket</a></p>
                 <p><a href="{% url 'ticket_review' %}">Créer une critique</a></p>
                 <p><a href="{% url 'posts' %}">Posts</a></p>
                 <p><a href="{% url 'subscriptions' %}">Abonnements</a></p>
