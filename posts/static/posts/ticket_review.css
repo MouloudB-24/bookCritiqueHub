@@ -1,0 +1,57 @@
+
+h2 {
+    font-size: 25px;
+    padding-bottom: 30px;
+    text-align: center;
+
+}
+
+form {
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+form p {
+   margin-bottom: 50px;
+
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+
+
+button[type='submit'] {
+    background-color: #1d3030;
+    color: #ffffe6;
+    font-size: 16px;
+    padding: 7px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+button[type='submit']:hover {
+   background-color: #2a4747;
+   color: white;
+}
+
+
+input[type='text'], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
