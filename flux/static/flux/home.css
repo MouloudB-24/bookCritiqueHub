@@ -4,6 +4,26 @@ body {
     padding: 0;
 }
 
+.home-request {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 10px 0px;
+}
+
+.home-request a {
+    border: 2px solid #1d3030;
+    padding: 8px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #1d3030;
+    transition: all 0.3s ease;
+}
+
+.home-request a:hover {
+    background-color: #1d3030;
+    color: #ffffe6;
+}
 
 h2 {
     text-align: center;
@@ -41,13 +61,6 @@ h2 {
     height: auto;
     border-radius: 5px;
     margin-top: 10px;
-}
-
-.post time {
-    font-size: 0.8em;
-    color: #95a5a6;
-    margin-bottom: 10px;
-    display: block;
 }
 
 

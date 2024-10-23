@@ -6,22 +6,23 @@
     <h2>Vos posts</h2>
     <div class="posts-container">
         {% for ticket in tickets %}
-        <div class="post">
-            <time>{{ ticket.data_created }}</time>
-            <h3>{{ ticket.title }}</h3>
-            <p>{{ ticket.description }}</p>
-            {% if ticket.image %}
-                <img src="{{ ticket.image.url }}" alt="{{ ticket.title }}">
-            {% endif %}
-        </div>
-        {% endfor %}
-
-        {% for review in reviews %}
-           <div class="post">
-               <time>{{ review.time_created }}</time>
-                <h3>{{ review.headline }}</h3>
-                <p>{{ review.body }}</p>
-           </div>
+            <div class="post">
+                <time>{{ ticket.data_created }}</time>
+                <h3>{{ ticket.title }}</h3>
+                <p>{{ ticket.description }}</p>
+                {% if ticket.image %}
+                    <img src="{{ ticket.image.url }}" alt="{{ ticket.title }}">
+                {% endif %}
+            </div>
+            {% if ticket.reviews.all %}
+                {% for review in ticket.reviews.all %}
+                   <div class="post">
+                       <time>{{ review.time_created }}</time>
+                        <h3>{{ review.headline }}</h3>
+                        <p>{{ review.body }}</p>
+                   </div>
+                {% endfor %}
+            {% endif  %}
         {% endfor %}
     </div>
 {% endblock content %}

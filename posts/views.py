@@ -75,6 +75,7 @@ class TicketReviewView(LoginRequiredMixin, View):
             ticket.uploader = request.user
             ticket.save()
             review = review_form.save(commit=False)
+            review.ticket = ticket
             review.user = request.user
             review.save()
             return redirect('posts')
