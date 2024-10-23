@@ -13,16 +13,16 @@
                 {% if ticket.image %}
                     <img src="{{ ticket.image.url }}" alt="{{ ticket.title }}">
                 {% endif %}
-            </div>
-            {% if ticket.reviews.all %}
-                {% for review in ticket.reviews.all %}
-                   <div class="post">
+
+                {% if ticket.reviews.all %}
+                    {% for review in ticket.reviews.all %}
                        <time>{{ review.time_created }}</time>
                         <h3>{{ review.headline }}</h3>
                         <p>{{ review.body }}</p>
-                   </div>
-                {% endfor %}
-            {% endif  %}
+
+                    {% endfor %}
+                {% endif  %}
+            </div>
         {% endfor %}
     </div>
 {% endblock content %}

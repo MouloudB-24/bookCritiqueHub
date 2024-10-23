@@ -8,27 +8,33 @@
 
      <div class="home-container">
          <div class="home-request">
-            <a href="{% url 'ticket' %}">Créer un ticket</a>
-            <a href="{% url 'ticket_review' %}">Créer une critique</a>
+            <a class="button" href="{% url 'ticket' %}">Créer un ticket</a>
+            <a class="button"  href="{% url 'ticket_review' %}">Créer une critique</a>
         </div>
         {% for ticket in tickets %}
             <div class="post">
-                <time>{{ ticket.data_created }}</time>
+                <time>Vous avez demandé une critique le {{ ticket.data_created }}</time>
                 <h3>{{ ticket.title }}</h3>
                 <p>{{ ticket.description }}</p>
                 {% if ticket.image %}
                     <img src="{{ ticket.image.url }}" alt="{{ ticket.title }}">
                 {% endif %}
-            </div>
-            {% if ticket.reviews.all %}
-                {% for review in ticket.reviews.all %}
-                   <div class="post">
-                       <time>{{ review.time_created }}</time>
+                {% if ticket.reviews.exists %}
+                    {% for review in ticket.reviews.all %}
+                        <time>Vous avez publié une critique le {{ review.time_created }}</time>
                         <h3>{{ review.headline }}</h3>
                         <p>{{ review.body }}</p>
-                   </div>
-                {% endfor %}
-            {% endif  %}
+                        {% if review.user == request.user %}
+                            <div class="button-container">
+                                <a class="button" id="button-modify" href="{% url 'review_update' review.id %}">Modifier</a>
+                                <a class="button" id="button-delete" href="{% url 'review_delete' review.id %}">Supprimer</a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <a class="button" href="{% url 'review' ticket.id %}">Créer une critique</a>
+                {% endif  %}
+            </div>
         {% endfor %}
     </div>
 {% endblock content %}

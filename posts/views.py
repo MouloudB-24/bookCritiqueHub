@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render, get_object_or_404
 from django.views import View
 
+from bookcritique.settings import LOGIN_REDIRECT_URL
 from posts.models import Ticket, Review
 from . import forms
 
@@ -81,3 +82,34 @@ class TicketReviewView(LoginRequiredMixin, View):
             return redirect('posts')
         return render(request, self.template_name, context={'ticket_form': ticket_form, 'review_form': review_form})
 
+
+class ReviewUpdateView(LoginRequiredMixin, View):
+    template_name = 'posts/review_update.html'
+    form_class = forms.ReviewForm
+
+    def get(self, request, review_id):
+        review = get_object_or_404(Review, pk=review_id, user=request.user)
+        form = self.form_class(instance=review)
+        return render(request, self.template_name, context={'form': form, 'review': review})
+
+    def post(self, request, review_id):
+        review = get_object_or_404(Review, pk=review_id, user=request.user)
+        form = self.form_class(request.POST, instance=review)
+
+        if form.is_valid():
+            form.save()
+            return redirect(LOGIN_REDIRECT_URL)
+        return render(request, self.template_name, context={'form': form, 'review': review})
+
+
+class ReviewDeleteView(LoginRequiredMixin, View):
+    template_name = 'posts/review_delete.html'
+
+    def get(self, request, review_id):
+        review = get_object_or_404(Review, pk=review_id, user=request.user)
+        return render(request, self.template_name, context={'review': review})
+
+    def post(self, request, review_id):
+        review = get_object_or_404(Review, pk=review_id, user=request.user)
+        review.delete()
+        return redirect(LOGIN_REDIRECT_URL)

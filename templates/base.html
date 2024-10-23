@@ -20,11 +20,13 @@
                 {% else %}
                     <img class="avatar" src="{% static 'images/LitReview.png' %}">
                 {% endif %}
-                <p><a href="{% url 'home' %}">Accueil</a></p>
-                <p><a href="{% url 'upload_profile_photo' %}">Photo de profil</a></p>
-                <p><a href="{% url 'posts' %}">Mes posts</a></p>
-                <p><a href="{% url 'following' %}">Abonnements</a></p>
-                <p><a href="{% url 'logout' %}">Se déconnecté</a></p>
+                <div class="menu">
+                    <p><a href="{% url 'home' %}">Accueil</a></p>
+                    <p><a href="{% url 'upload_profile_photo' %}">Photo de profil</a></p>
+                    <p><a href="{% url 'posts' %}">Mes posts</a></p>
+                    <p><a href="{% url 'following' %}">Abonnements</a></p>
+                    <p><a href="{% url 'logout' %}">Se déconnecté</a></p>
+                </div>
             <!--/*<img id="logo" src="{% static 'images/LitReview.png' %}" alt="">*/ -->
             {% endif %}
 
