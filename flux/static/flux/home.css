@@ -54,3 +54,10 @@ h2 {
 h2, .post {
     margin-bottom : 20px;
 }
+
+time {
+    font-size: 0.8em;
+    color: #95a5a6;
+    margin-bottom: 10px;
+    display: block;
+}

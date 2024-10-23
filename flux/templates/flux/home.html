@@ -7,7 +7,7 @@
     <div class="home-container">
         {% for ticket in tickets %}
             <div class="post">
-                <p>{{ ticket.data_created }}</p>
+                <time>{{ ticket.data_created }}</time>
                 <h3>{{ ticket.title }}</h3>
                 <p>{{ ticket.description }}</p>
                 {% if ticket.image %}

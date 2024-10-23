@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'subscriptions/subscriptions.css' %}">
     <h2>Vos abonnements</h2>
 
     <!-- Section pour suivre d'autres utilisateur -->
@@ -8,23 +10,27 @@
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Envoyer</button>
+        <button type="submit">Ajouter</button>
     </form>
 
     <!-- Séction pour afficher les abonnements -->
     <h3>Abonnements</h3>
-        {% for follow in user.following.all %}
-            {{ follow.followed_user.username }}
-        {% empty %}
-            <p>Vous ne suivez encore personne !</p>
-        {% endfor %}
+        <ul>
+            {% for follow in user.following.all %}
+                <li>{{ follow.followed_user.username }}</li>
+            {% empty %}
+                <p>Vous ne suivez encore personne !</p>
+            {% endfor %}
+        </ul>
 
     <!-- Séction pour afficher les abonnés -->
     <h3>Abonnés</h3>
-    {% for follower in user.followers.all %}
-        {{ follower.user.username }}
-    {% empty %}
-        <p>Vous n'avez pas encore d'abonnés !</p>
-    {% endfor %}
+    <ul>
+        {% for follower in user.followers.all %}
+            <li>{{ follower.user.username }}</li>
+        {% empty %}
+            <p>Vous n'avez pas encore d'abonnés !</p>
+        {% endfor %}
+    </ul>
 
 {% endblock content %}
