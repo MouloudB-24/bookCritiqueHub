@@ -13,6 +13,7 @@ body {
 
 .home-request a {
     padding: 6px 30px;
+    font-size: 16px;
 }
 
 h2 {
@@ -42,10 +43,13 @@ h2 {
     color: #1d3030;
     font-size: 1.4em;
     margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 0px;
 }
 
 .post p {
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .post img {
@@ -60,6 +64,7 @@ h2 {
     right: 20px;
     bottom: 20px;
     padding: 5px 10px;
+    font-size: 14px;
 }
 
 
@@ -72,12 +77,27 @@ time {
     color: #95a5a6;
     margin-bottom: 10px;
     display: block;
+    margin-top: 20px;
+
 }
-.post .button-container a {
-   padding: 5px 10px
 
 
-#button-modify {
+#button-modify-review {
    bottom: 20px;
-   right: 125px;
+   right: 20px;
+}
+
+#button-delete-review {
+   bottom: 20px;
+   right: 100px;
+}
+
+#button-delete-ticket {
+   bottom: 20px;
+   right: 100px;
+}
+
+#button-modify-ticket {
+   bottom: 20px;
+   right: 20px;
 }

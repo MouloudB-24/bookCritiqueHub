@@ -22,7 +22,6 @@ from django.urls import path
 import authentication.views
 import posts.views
 import subscriptions.views
-from flux.views import HomePage
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -35,12 +34,14 @@ urlpatterns = [
     path('ticket/<int:ticket_id>/review/', posts.views.ReviewView.as_view(), name='review'),
     path('review/<int:review_id>/update', posts.views.ReviewUpdateView.as_view(), name='review_update'),
     path('review/<int:review_id>/delete', posts.views.ReviewDeleteView.as_view(), name='review_delete'),
+    path('ticket/<int:ticket_id>/update', posts.views.TicketUpdateView.as_view(), name='ticket_update'),
+    path('ticket/<int:ticket_id>/delete', posts.views.TicketDeleteView.as_view(), name='ticket_delete'),
     path('ticket/review', posts.views.TicketReviewView.as_view(), name='ticket_review'),
     path('posts/', posts.views.PostsView.as_view(), name='posts'),
     path('subscriptions/', subscriptions.views.SubscriptionsView.as_view(), name='subscriptions'),
     path('follow/', subscriptions.views.FollowUserView.as_view(), name='following'),
     path('profile-photo/upload', authentication.views.UploadProfilePhoto.as_view(), name='upload_profile_photo'),
-    path('home/', HomePage.as_view(), name='home'),
+    path('home/', posts.views.HomePage.as_view(), name='home'),
 ]
 
 if settings.DEBUG:
