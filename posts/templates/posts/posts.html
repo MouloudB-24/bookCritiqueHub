@@ -2,20 +2,30 @@
 {% load static %}
 
 {% block content %}
-    <link rel="stylesheet" type="text/css" href="{% static 'posts/posts.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/home.css' %}">
     <h2>Vos posts</h2>
-    <div class="posts-container">
+
+    <div class="home-container">
         {% for ticket in tickets %}
             <div class="post">
-               {% if request.user.username == ticket.uploader.username %}
+                {% if request.user.username == ticket.uploader.username %}
                     <time>{{ ticket.date_created }} - Vous avez publié un ticket</time>
                 {% else %}
                     <time>{{ ticket.date_created }} - {{ ticket.uploader.username }} a publié un ticket</time>
                 {% endif %}
+
                 <h3>{{ ticket.title }}</h3>
                 <p>{{ ticket.description }}</p>
+
                 {% if ticket.image %}
                     <img src="{{ ticket.image.url }}" alt="{{ ticket.title }}">
+                {% endif %}
+                {% if ticket.uploader == request.user %}
+                        <div class="button-container">
+                            <a class="button" id="button-delete-ticket" href="{% url 'ticket_delete' ticket.id %}">Supprimer</a>
+                            <a class="button" id="button-modify-ticket" href="{% url 'ticket_update' ticket.id %}">Modifier</a>
+                        </div>
+                {% else %}
                 {% endif %}
             </div>
         {% endfor %}
@@ -23,12 +33,19 @@
         <div class="post">
             {% for review in reviews %}
                 <time>{{ review.date_created }} - Vous avez publié une critique</time>
-                <h3>{{ review.headline }}</h3>
+                <h3>{{ review.headline }} - {{ review.rating }}</h3>
                 <p>{{ review.body }}</p>
+                <time>{{ review.ticket.date_created }} - {{ review.ticket.uploader }} a publié une critique</time>
                 <h3>{{ review.ticket.title }}</h3>
                 {% if review.ticket.image %}
                     <img src="{{ review.ticket.image.url }}" alt="{{ ticket.title }}">
                 {% endif %}
+                {% if review.user == request.user %}
+                            <div class="button-container">
+                                <a class="button" id="button-delete-review" href="{% url 'review_delete' review.id %}">Supprimer</a>
+                                <a class="button" id="button-modify-review" href="{% url 'review_update' review.id %}">Modifier</a>
+                            </div>
+                        {% endif %}
             {% endfor %}
         </div>
     </div>
