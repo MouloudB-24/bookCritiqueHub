@@ -53,8 +53,9 @@ h2 {
 }
 
 .post img {
-    max-width: 30%;
-    height: auto;
+    width: 180px;
+    height: 260px;
+    object-fit: cover;
     border-radius: 5px;
     margin-top: 10px;
 }
