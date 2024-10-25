@@ -39,6 +39,7 @@ urlpatterns = [
     path('ticket/review', posts.views.TicketReviewView.as_view(), name='ticket_review'),
     path('posts/', posts.views.PostsView.as_view(), name='posts'),
     path('subscriptions/', subscriptions.views.SubscriptionsView.as_view(), name='subscriptions'),
+    path('unfollow/<int:user_id>/', subscriptions.views.UnFollowUserView.as_view(), name='unfollow_user'),
     path('follow/', subscriptions.views.FollowUserView.as_view(), name='following'),
     path('profile-photo/upload', authentication.views.UploadProfilePhoto.as_view(), name='upload_profile_photo'),
     path('home/', posts.views.HomePage.as_view(), name='home'),

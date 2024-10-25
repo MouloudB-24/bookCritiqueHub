@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 
 from authentication.models import User
@@ -20,7 +20,6 @@ class FollowUserView(LoginRequiredMixin, View):
     form_class = FollowUserForm
 
     def get(self, request):
-        message = ''
         form = self.form_class()
         return render(request, self.template_name, context={'form': form, 'user': request.user})
 
@@ -42,3 +41,14 @@ class FollowUserView(LoginRequiredMixin, View):
                 messages.error(request, "Cet utilisateur n'existe pas !")
             return redirect('subscriptions')
         return render(request, self.template_name, context={'form': form})
+
+
+class UnFollowUserView(LoginRequiredMixin, View):
+    def post(self, request, user_id):
+        user_to_unfollow = get_object_or_404(User, id=user_id)
+        follow_relation = UserFollows.objects.filter(user=request.user, followed_user=user_to_unfollow)
+
+        if follow_relation.exists():
+            follow_relation.delete()
+            messages.success(request, f"Vous ne suivez plus {user_to_unfollow.username}.")
+        return redirect('subscriptions')

@@ -7,17 +7,23 @@
 
     <!-- Section pour suivre d'autres utilisateur -->
     <h3>Suivre d'autres utilisateurs</h3>
-    <form method="POST">
+    <form id="search-form" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Ajouter</button>
+        <button id="add-button" type="submit">Ajouter</button>
     </form>
 
-    <!-- Séction pour afficher les abonnements -->
+    <!-- Séction pour afficher les abonnements avec un bouton 'Désabonner'-->
     <h3>Abonnements</h3>
-        <ul>
+        <ul class="subscription-list">
             {% for follow in user.following.all %}
-                <li>{{ follow.followed_user.username }}</li>
+                <li class="subscription-item">
+                    {{ follow.followed_user.username }}
+                    <form method="POST" action="{% url 'unfollow_user' follow.followed_user.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Désabonner</button>
+                    </form>
+                </li>
             {% empty %}
                 <p>Vous ne suivez encore personne !</p>
             {% endfor %}
