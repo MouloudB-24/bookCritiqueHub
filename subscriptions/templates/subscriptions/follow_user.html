@@ -3,7 +3,10 @@
 
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'subscriptions/subscriptions.css' %}">
-    <h2>Vos abonnements</h2>
+    <div class="header-div">
+        <h2>Vos abonnements</h2>
+        <a href="{% url 'home' %}" class="button-back">Retour</a>
+    </div>
 
     <!-- Section pour suivre d'autres utilisateur -->
     <h3>Suivre d'autres utilisateurs</h3>

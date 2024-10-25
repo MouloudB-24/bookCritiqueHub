@@ -35,7 +35,7 @@
                         {% endif %}
 
                         <h3>{{ review.headline }} - {{ review.rating }}</h3>
-                        <p>{{ review.body }}</p>
+                        <p class="review-body">{{ review.body }}</p>
 
                         {% if review.user == request.user %}
                             <div class="button-container">

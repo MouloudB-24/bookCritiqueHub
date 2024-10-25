@@ -53,3 +53,8 @@ h2 {
 h2, .post {
     margin-bottom : 20px;
 }
+
+.review-body {
+    width: 80%;
+    font-size: 15px;
+}

@@ -49,3 +49,36 @@ button:hover {
     display: flex;
     justify-content: space-between;
 }
+
+.header-div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.header-div h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #1d3030;
+}
+
+.button-back {
+    position: absolute;
+    left: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background-color: #1d3030;
+    color: #ffffe6;
+    font-size: 14px;
+    padding: 5px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.button-back:hover {
+    background-color:  #ffffe6;
+    color: #1d3030;
+}

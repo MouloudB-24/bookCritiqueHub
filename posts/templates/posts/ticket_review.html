@@ -3,7 +3,10 @@
 
 {% block content %}
   <link rel="stylesheet" href="{% static 'posts/ticket_review.css' %}">
-  <h2>Créer un ticket avec une critique</h2>
+  <div class="header-div">
+      <h2>Créer un ticket avec une critique</h2>
+      <a href="{% url 'home' %}" class="button-back">Retour</a>
+  </div>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ ticket_form.as_p}}

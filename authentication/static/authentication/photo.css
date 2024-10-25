@@ -32,14 +32,48 @@ button[type='submit']:hover {
 
 
 input[type="file"] {
-    padding: 10px; /* Espacement intérieur pour le champ de fichier */
-    border: 1px solid #ced4da; /* Bordure grise claire */
-    border-radius: 4px; /* Coins arrondis */
-    width: 100%; /* Largeur complète */
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    width: 100%;
 }
 
 form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+
+.header-div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.header-div h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #1d3030;
+}
+
+.button-back {
+    position: absolute;
+    left: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background-color: #1d3030;
+    color: #ffffe6;
+    font-size: 14px;
+    padding: 5px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.button-back:hover {
+    background-color:  #ffffe6;
+    color: #1d3030;
 }
