@@ -1,11 +1,4 @@
 
-h2 {
-    font-size: 25px;
-    padding-bottom: 30px;
-    text-align: center;
-
-}
-
 form {
     width: 80%;
     margin: 0 auto;
@@ -24,25 +17,6 @@ label {
     color: #555;
 }
 
-
-
-button[type='submit'] {
-    background-color: #1d3030;
-    color: #ffffe6;
-    font-size: 16px;
-    padding: 7px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.3s ease;
-}
-
-button[type='submit']:hover {
-   background-color:  #ffffe6;
-   color: #1d3030;
-}
-
-
 input[type='text'], textarea {
     width: 100%;
     padding: 10px;
@@ -53,39 +27,4 @@ input[type='text'], textarea {
 textarea {
     resize: vertical;
     min-height: 100px;
-}
-
-
-
-.header-div {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    margin-bottom: 30px;
-}
-
-.header-div h2 {
-    margin: 0;
-    font-size: 24px;
-    color: #1d3030;
-}
-
-.button-back {
-    position: absolute;
-    left: 20px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    background-color: #1d3030;
-    color: #ffffe6;
-    font-size: 14px;
-    padding: 5px 12px;
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-.button-back:hover {
-    background-color:  #ffffe6;
-    color: #1d3030;
 }

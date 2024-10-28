@@ -2,11 +2,15 @@
 {% load static %}
 
 {% block content %}
-    <h2>Supprimer la ticket</h2>
-    <p>Êtes-vous sûr de vouloir supprimer ce ticket ?</p>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <button type="submit">Oui, supprimer</button>
-        <a href="{% url 'home' %}">Annuler</a>
-    </form>
+    <link rel="stylesheet" type="text/css" href="{% static 'posts/delete_ticket_review.css' %}">
+    <h2>Supprimer le ticket</h2>
+    <div class="delete-div">
+        <p>Êtes-vous sûr de vouloir supprimer ce ticket ?</p>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <button class="button" type="submit">Oui, supprimer</button>
+            <a class="button" href="{% url 'home' %}">Annuler</a>
+        </form>
+    </div>
+
 {% endblock content %}

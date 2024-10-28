@@ -1,45 +1,29 @@
 
-
-div p {
-    margin-bottom: 20px;
-    font-size: 1em;
-}
-
-form {
+.login-div {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    gap: 50px;
 }
 
 input[type='text'], input[type='password'], button {
-    width: 30%;
-    padding: 15px;
+    width: 80%;
+    padding: 5 5;
     border-radius: 5px;
     border: 1px solid #ddd;
+    font-size: 0.7em;
+    margin: 10 10;
 }
 
-button[type='submit'] {
-    margin-left: auto;
-    margin-bottom: 50px;
-    display: block;
-    background-color: #1d3030;
-    color: #ffffe6;
-    font-size: 16px;
-    padding: 7px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.3s ease;
-}
-
-
-button[type='submit']:hover {
-   background-color: #2a4747;
-   color: white;
+.connect-title {
+    margin-bottom: 20;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 #message {
-    font-size: 0.9em;
+    font-size: 1em;
+    color: red;
 }
 
 a {
@@ -51,6 +35,18 @@ a:hover {
     text-decoration: underline;
 }
 
-.authentication-page p.connect-title {
-    margin-right: 100px;
+#inscription-text {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+
+/* ------------ Styles pour les Tablettes (écrans >= 768px) ------------ */
+@media only screen and (min-width: 769px) {
+    input[type='text'], input[type='password'], button {
+        width: 100%;
+        padding: 10 10;
+
+    }
+
 }

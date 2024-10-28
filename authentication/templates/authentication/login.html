@@ -3,16 +3,14 @@
 
 {% block content %}
     <link rel="stylesheet" href="{% static 'authentication/login.css' %}">
-        <div>
-            <p id="message">{{ message }}</p>
-            <p class="connect-title">Connectez-vous</p>
-            <form method="post">
-                {{ form.as_p }}
-                {% csrf_token %}
-                <button type="submit">Se connecter</button>
-            </form>
-        </div>
-        <div>
-            <p>Pas encore membre ? <a href="{% url 'signup' %}">Inscrivez-vous maintenant !</a></p>
+        <div class="login-div">
+                <p id="message">{{ message }}</p>
+                <h2>Connectez-vous</h2>
+                <form method="post">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <button class="button" type="submit">Se connecter</button>
+                </form>
+            <p id="inscription-text">Pas encore membre ?</p> <a href="{% url 'signup' %}">Inscrivez-vous maintenant !</a>
         </div>
 {% endblock content %}

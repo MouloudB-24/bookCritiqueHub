@@ -3,10 +3,13 @@
 
 {% block content %}
   <link rel="stylesheet" type="text/css" href="{% static 'posts/ticket_review.css' %}">
-    <h2>Modifier le ticket</h2>
+    <div class="header-div">
+       <h2>Modifier le ticket</h2>
+      <a href="{% url 'home' %}" class="button-back">Retour</a>
+  </div>
   <form method="post" enctype="multipart/form-data">
     {{ form.as_p}}
     {% csrf_token %}
-    <button type="submit">Enregistrer les modifications</button>
+    <button class="button" type="submit">Enregistrer les modifications</button>
   </form>
 {% endblock content %}

@@ -2,12 +2,14 @@
 {% load static %}
 
 {% block content %}
-  <link rel="stylesheet" type="text/css" href="{% static 'posts/delete_review.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'posts/delete_ticket_review.css' %}">
     <h2>Supprimer la critique</h2>
-    <p>Êtes-vous sûr de vouloir supprimer cette critique ?</p>
-    <form method="post" enctype="multipart/form-data">
+    <div class="delete-div">
+        <p>Êtes-vous sûr de vouloir supprimer cette critique ?</p>
+        <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <button class="button" type="submit">Oui, supprimer</button>
         <a  class="button" href="{% url 'home' %}">Annuler</a>
     </form>
+    </div>
 {% endblock content %}

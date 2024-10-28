@@ -117,6 +117,7 @@ h2 {
     text-align: center;
     margin-bottom: 20px;
     color: var(--color1);
+    font-size: 1.3em;
 }
 
 h3 {
@@ -134,22 +135,6 @@ h3 {
 
 .button-container {
     margin-top: 40px;
-}
-
-.button {
-    border: 1px solid var(--color1);
-    border-radius: 20px;
-    text-decoration: none;
-    color: var(--color2);
-    transition: all 0.3s ease;
-    background-color: var(--color1);
-    padding: 2px 6px;
-    font-size: 0.5em;
-}
-
-.button:hover {
-    background-color: var(--color2);
-    color:  var(--color1);
 }
 
 .book-profile-image {
@@ -208,16 +193,32 @@ time {
     margin-bottom: 30px;
 }
 
+.button {
+    border: 1px solid var(--color1);
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--color2);
+    transition: all 0.3s ease;
+    background-color: var(--color1);
+    padding: 2px 6px;
+    font-size: 0.5em;
+}
+
+.button:hover {
+    background-color: var(--color2);
+    color:  var(--color1);
+}
+
 .button-back {
     position: absolute;
     left: 20px;
     text-decoration: none;
     transition: all 0.3s ease;
     background-color: var(--color1);
-    color: #ffffe6;
-    font-size: 14px;
-    padding: 5px 12px;
-    border-radius: 15px;
+    color: var(--color2);
+    font-size: 0.5em;
+    padding: 2px 6px;
+    border-radius: 20px;
     cursor: pointer;
 }
 
@@ -228,6 +229,11 @@ time {
 
 .contact-us {
     bottom: 20px;
+}
+
+.delete-div {
+   max-width: 80%;
+   margin: 30px auto;
 }
 
 
@@ -251,6 +257,10 @@ time {
 
     .logo {
         font-size: 0.9em;
+    }
+
+    h2 {
+        font-size: 1.5em;
     }
 
     .username {
@@ -291,6 +301,11 @@ time {
     }
 
     .button {
+        font-size: 0.8em;
+        padding: 5px 10px;
+    }
+
+    .button-back {
         font-size: 0.8em;
         padding: 5px 10px;
     }
