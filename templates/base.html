@@ -7,32 +7,40 @@
         <link rel="stylesheet" href="{% static 'app.css' %}">
     </hear>
     <body>
-        <div class="sidebar">
-            {% if user.is_authenticated %}
-                <p><a class="logo" href="{% url 'home' %}">LitReview</a></p>
-            {% else %}
-                <p><a class="logo" href="{% url 'login' %}">LitReview</a></p>
-            {% endif %}
-            {% if user.is_authenticated %}
-                <p>Salut, {{ user }} </p>
-                {% if user.profile_photo %}
-                    <img class="avatar" src={{ user.profile_photo.url }}>
-                {% else %}
-                    <img class="avatar" src="{% static 'images/LitReview.png' %}">
-                {% endif %}
-                <div class="menu">
-                    <p><a href="{% url 'home' %}">Accueil</a></p>
-                    <p><a href="{% url 'upload_profile_photo' %}">Photo de profil</a></p>
-                    <p><a href="{% url 'posts' %}">Mes posts</a></p>
-                    <p><a href="{% url 'following' %}">Abonnements</a></p>
-                    <p><a href="{% url 'logout' %}">Se déconnecté</a></p>
+        <div class="container">
+            <div class="sidebar">
+                <div>
+                    {% if user.is_authenticated %}
+                        <h1><a class="logo" href="{% url 'home' %}">LitReview</a></h1>
+                    {% else %}
+                        <h1><a class="logo" href="{% url 'login' %}">LitReview</a></h1>
+                    {% endif %}
                 </div>
-            <!--/*<img id="logo" src="{% static 'images/LitReview.png' %}" alt="">*/ -->
-            {% endif %}
+                <div>
+                    {% if user.is_authenticated %}
+                        <p class="username">Salut, {{ user }} </p>
+                        {% if user.profile_photo %}
+                            <img class="avatar" src={{ user.profile_photo.url }}>
+                        {% else %}
+                            <img class="avatar" src="{% static 'images/LitReview.png' %}">
+                        {% endif %}
+                        <div class="menu">
+                            <p><a href="{% url 'home' %}">Accueil</a></p>
+                            <p><a href="{% url 'upload_profile_photo' %}">Photo de profil</a></p>
+                            <p><a href="{% url 'posts' %}">Mes posts</a></p>
+                            <p><a href="{% url 'following' %}">Abonnements</a></p>
+                        </div>
 
-        </div>
-        <div class="main">
-            {% block content %}{% endblock content %}
+                        <div class="contact">
+                            <p><a href="">Contactez-nous</a></p>
+                            <p><a href="{% url 'logout' %}">Se déconnecté</a></p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="main">
+                {% block content %}{% endblock content %}
+            </div>
         </div>
     </body>
 </html>

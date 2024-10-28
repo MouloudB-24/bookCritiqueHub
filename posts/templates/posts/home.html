@@ -2,13 +2,14 @@
 {% load static %}
 
 {% block content %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'posts/home.css' %}">
     <h2>Flux</h2>
 
     <div class="home-container">
         <div class="home-request">
-            <a class="button" href="{% url 'ticket' %}">Demander une critique</a>
-            <a class="button" href="{% url 'ticket_review' %}">Créer une critique</a>
+            <a class="button" id="button-critique-request" href="{% url 'ticket' %}">Demander une critique</a>
+            <a class="button" id="button-critique-create" href="{% url 'ticket_review' %}">Créer une critique</a>
         </div>
 
         {% for ticket in tickets %}
@@ -20,22 +21,22 @@
                 {% endif %}
 
                 <h3>{{ ticket.title }}</h3>
-                <p>{{ ticket.description }}</p>
+                <p class="description">{{ ticket.description }}</p>
 
                 {% if ticket.image %}
-                    <img src="{{ ticket.image.url }}" alt="{{ ticket.title }}">
+                    <img class="book-profile-image" src="{{ ticket.image.url }}" alt="{{ ticket.title }}">
                 {% endif %}
 
                 {% if ticket.reviews.exists %}
                     {% for review in ticket.reviews.all %}
                         {% if request.user.username == review.user.username %}
-                            <time>{{ review.date_created }} - Vous avez publié une critique</time>
+                            <time class="review-time">{{ review.date_created }} - Vous avez publié une critique</time>
                         {% else %}
-                            <time>{{ review.date_created }} - {{ review.user.username }} a publié une critique</time>
+                            <time class="review-time">{{ review.date_created }} - {{ review.user.username }} a publié une critique</time>
                         {% endif %}
 
                         <h3>{{ review.headline }} - {{ review.rating }}</h3>
-                        <p class="review-body">{{ review.body }}</p>
+                        <p class="description">{{ review.body }}</p>
 
                         {% if review.user == request.user %}
                             <div class="button-container">
@@ -45,7 +46,9 @@
                         {% endif %}
                     {% endfor %}
                     {% if not ticket.user_has_reviewed %}
-                        <a class="button" href="{% url 'review' ticket.id %}">Créer une critique</a>
+                        <div class="button-critique-create-bis">
+                            <a class="button" id="button-critique-create-bis1" href="{% url 'review' ticket.id %}">Créer une critique</a>
+                        </div>
                     {% endif %}
                 {% else %}
                     {% if ticket.uploader == request.user %}
@@ -54,7 +57,9 @@
                             <a class="button" id="button-modify-ticket" href="{% url 'ticket_update' ticket.id %}">Modifier</a>
                         </div>
                     {% else %}
-                        <a class="button" href="{% url 'review' ticket.id %}">Créer une critique</a>
+                       <div class="button-critique-create-bis">
+                            <a class="button" id="button-critique-create-bis2" href="{% url 'review' ticket.id %}">Créer une critique</a>
+                       </div>
                     {% endif %}
                 {% endif %}
             </div>

@@ -4,14 +4,14 @@
 {% block content %}
     <link rel="stylesheet" href="{% static 'authentication/photo.css' %}">
   <div class="header-div">
-      <h2>Charger une photo de profil</h2>
-      <a href="{% url 'home' %}" class="button-back">Retour</a>
+      <h2 id="upload_photo">Charger une photo</h2>
+      <a href="{% url 'home' %}" class="button" id="button-back">Retour</a>
   </div>
-   <div class="container">
+   <div class="home-container">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" >Publier</button>
+            <button class="button" type="submit" >Publier</button>
         </form>
    </div>
 {% endblock content %}

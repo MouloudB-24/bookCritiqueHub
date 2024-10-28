@@ -1,15 +1,10 @@
-h2 {
-    font-size: 25px;
-    text-align: center;
-
+.subscriptions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    max-width: 100%
 }
-
-h3 {
-    border-bottom: 2px solid #1d3030;
-    padding-bottom: 10px;
-    margin-top: 50px;
-}
-
 
 #search-form {
     width: 80%;
@@ -19,6 +14,13 @@ h3 {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
+#add-button {
+    margin-top: 20px;
+}
+
+ul {
+    min-width: 80%;
+}
 
 ul li {
     padding: 10px;
@@ -29,56 +31,8 @@ ul li:last-child {
     border-bottom: none;
 }
 
-button {
-    background-color: #1d3030;
-    color: #ffffe6;
-    font-size: 14px;
-    padding: 6px 10px;
-    border-radius: 20px;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-   background-color: #ffffe6;
-   color: #1d3030;
-}
-
 .subscription-item {
     display: flex;
     justify-content: space-between;
 }
 
-.header-div {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    margin-bottom: 30px;
-}
-
-.header-div h2 {
-    margin: 0;
-    font-size: 24px;
-    color: #1d3030;
-}
-
-.button-back {
-    position: absolute;
-    left: 20px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    background-color: #1d3030;
-    color: #ffffe6;
-    font-size: 14px;
-    padding: 5px 12px;
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-.button-back:hover {
-    background-color:  #ffffe6;
-    color: #1d3030;
-}
