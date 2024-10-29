@@ -36,4 +36,6 @@ et analyses.
 Une fois l'installation est terminée, rendez-vous sur "http://127.0.0.1:8000/" dans votre
 navigateur pour accéder à l'interface web de l'application.
 
+![img.png](img.png)
+
 **Nota :** Assurez-vous d'avoir un environnement Python configuré.
