@@ -3,10 +3,10 @@ from django.db import models
 
 
 class User(AbstractUser):
-    profile_photo = models.ImageField(verbose_name='Photo de profile')
+    profile_photo = models.ImageField(verbose_name="Photo de profile")
     bio = models.TextField(blank=True)
 
-    follows = models.ManyToManyField('self',
+    follows = models.ManyToManyField("self",
                                      related_name="followed_by",
                                      symmetrical=False,
                                      blank=True)

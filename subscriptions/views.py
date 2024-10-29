@@ -9,19 +9,19 @@ from .models import UserFollows
 
 
 class SubscriptionsView(LoginRequiredMixin, View):
-    template_name = 'subscriptions/subscriptions.html'
+    template_name = "subscriptions/subscriptions.html"
 
     def get(self, request):
         return render(request, self.template_name)
 
 
 class FollowUserView(LoginRequiredMixin, View):
-    template_name = 'subscriptions/follow_user.html'
+    template_name = "subscriptions/follow_user.html"
     form_class = FollowUserForm
 
     def get(self, request):
         form = self.form_class()
-        return render(request, self.template_name, context={'form': form, 'user': request.user})
+        return render(request, self.template_name, context={"form": form, "user": request.user})
 
     def post(self, request):
         form = FollowUserForm(request.POST)
@@ -30,7 +30,7 @@ class FollowUserView(LoginRequiredMixin, View):
             try:
                 user_to_follow = User.objects.get(username=username)
                 if user_to_follow == request.user:
-                    messages.error(request, 'Vous ne pouvez pas vous suivre vous-même!')
+                    messages.error(request, "Vous ne pouvez pas vous suivre vous-même!")
                 elif UserFollows.objects.filter(user=request.user, followed_user=user_to_follow).exists():
                     messages.error(request, f"Vous suivez déjà {username}.")
                 else:
@@ -39,8 +39,8 @@ class FollowUserView(LoginRequiredMixin, View):
 
             except User.DoesNotExist:
                 messages.error(request, "Cet utilisateur n'existe pas !")
-            return redirect('subscriptions')
-        return render(request, self.template_name, context={'form': form})
+            return redirect("subscriptions")
+        return render(request, self.template_name, context={"form": form})
 
 
 class UnFollowUserView(LoginRequiredMixin, View):
@@ -51,4 +51,4 @@ class UnFollowUserView(LoginRequiredMixin, View):
         if follow_relation.exists():
             follow_relation.delete()
             messages.success(request, f"Vous ne suivez plus {user_to_unfollow.username}.")
-        return redirect('subscriptions')
+        return redirect("subscriptions")

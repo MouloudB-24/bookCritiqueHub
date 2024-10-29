@@ -12,4 +12,3 @@ class UserFollows(models.Model):
 
     def __str__(self):
         return f"{self.user.username} suits {self.followed_user.username}"
-

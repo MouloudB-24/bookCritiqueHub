@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -25,24 +26,44 @@ import subscriptions.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', authentication.views.LoginPageView.as_view(), name='login'),
-    path('logout/', authentication.views.LogoutPageView.as_view(), name='logout'),
-    path('change-password/', authentication.views.PasswordChange.as_view(), name='password_change'),
-    path('change-password-done/', authentication.views.PasswordChangeDone.as_view(), name='password_change_done'),
-    path('signup/', authentication.views.SignupPageView.as_view(), name='signup'),
-    path('ticket/', posts.views.TicketView.as_view(), name='ticket'),
-    path('ticket/<int:ticket_id>/review/', posts.views.ReviewView.as_view(), name='review'),
-    path('review/<int:review_id>/update', posts.views.ReviewUpdateView.as_view(), name='review_update'),
-    path('review/<int:review_id>/delete', posts.views.ReviewDeleteView.as_view(), name='review_delete'),
-    path('ticket/<int:ticket_id>/update', posts.views.TicketUpdateView.as_view(), name='ticket_update'),
-    path('ticket/<int:ticket_id>/delete', posts.views.TicketDeleteView.as_view(), name='ticket_delete'),
-    path('ticket/review', posts.views.TicketReviewView.as_view(), name='ticket_review'),
-    path('posts/', posts.views.PostsView.as_view(), name='posts'),
-    path('subscriptions/', subscriptions.views.SubscriptionsView.as_view(), name='subscriptions'),
-    path('unfollow/<int:user_id>/', subscriptions.views.UnFollowUserView.as_view(), name='unfollow_user'),
-    path('follow/', subscriptions.views.FollowUserView.as_view(), name='following'),
-    path('profile-photo/upload', authentication.views.UploadProfilePhoto.as_view(), name='upload_profile_photo'),
-    path('home/', posts.views.HomePage.as_view(), name='home'),
+    path("", authentication.views.LoginPageView.as_view(), name="login"),
+    path("logout/", authentication.views.LogoutPageView.as_view(), name="logout"),
+    path("change-password/",
+         authentication.views.PasswordChange.as_view(),
+         name="password_change"),
+    path("change-password-done/",
+         authentication.views.PasswordChangeDone.as_view(),
+         name="password_change_done"),
+    path("signup/", authentication.views.SignupPageView.as_view(), name="signup"),
+    path("ticket/", posts.views.TicketView.as_view(), name="ticket"),
+    path("ticket/<int:ticket_id>/review/",
+         posts.views.ReviewView.as_view(),
+         name="review"),
+    path("review/<int:review_id>/update",
+         posts.views.ReviewUpdateView.as_view(),
+         name="review_update"),
+    path("review/<int:review_id>/delete",
+         posts.views.ReviewDeleteView.as_view(),
+         name="review_delete"),
+    path("ticket/<int:ticket_id>/update",
+         posts.views.TicketUpdateView.as_view(),
+         name="ticket_update"),
+    path("ticket/<int:ticket_id>/delete",
+         posts.views.TicketDeleteView.as_view(),
+         name="ticket_delete"),
+    path("ticket/review", posts.views.TicketReviewView.as_view(), name="ticket_review"),
+    path("posts/", posts.views.PostsView.as_view(), name="posts"),
+    path("subscriptions/",
+         subscriptions.views.SubscriptionsView.as_view(),
+         name="subscriptions"),
+    path("unfollow/<int:user_id>/",
+         subscriptions.views.UnFollowUserView.as_view(),
+         name="unfollow_user"),
+    path("follow/", subscriptions.views.FollowUserView.as_view(), name="following"),
+    path("profile-photo/upload",
+         authentication.views.UploadProfilePhoto.as_view(),
+         name="upload_profile_photo"),
+    path("home/", posts.views.HomePage.as_view(), name="home"),
 ]
 
 if settings.DEBUG:

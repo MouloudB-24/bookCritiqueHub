@@ -9,23 +9,28 @@ from . import forms
 
 
 class LoginPageView(View):
-    template_name = 'authentication/login.html'
+    template_name = "authentication/login.html"
     form_class = forms.LoginForm
 
     def get(self, request):
         form = self.form_class()
-        message = ''
-        return render(request, self.template_name, context={'form': form, 'message': message})
+        message = ""
+        return render(request,
+                      self.template_name,
+                      context={"form": form, "message": message})
 
     def post(self, request):
         form = self.form_class(request.POST)
         if form.is_valid():
-            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
+            user = authenticate(username=form.cleaned_data["username"],
+                                password=form.cleaned_data["password"])
             if user:
                 login(request, user)
                 return redirect(LOGIN_REDIRECT_URL)
-        message = 'Identifiants invalides.'
-        return render(request, self.template_name, context={'form': form, 'message': message})
+        message = "Identifiants invalides."
+        return render(request,
+                      self.template_name,
+                      context={"form": form, "message": message})
 
 
 class LogoutPageView(View):
@@ -35,12 +40,12 @@ class LogoutPageView(View):
 
 
 class SignupPageView(View):
-    template_name = 'authentication/signup.html'
+    template_name = "authentication/signup.html"
     form_class = forms.SignupForm
 
     def get(self, request):
         form = self.form_class()
-        return render(request, self.template_name, context={'form': form})
+        return render(request, self.template_name, context={"form": form})
 
     def post(self, request):
         form = self.form_class(request.POST)
@@ -48,29 +53,28 @@ class SignupPageView(View):
             user = form.save()
             login(request, user)
             return redirect(LOGIN_REDIRECT_URL)
-        return render(request, self.template_name, context={'form': form})
+        return render(request, self.template_name, context={"form": form})
 
 
 class PasswordChange(PasswordChangeView):
-    template_name = 'authentication/password_change_form.html'
-    success_url = reverse_lazy('password_change_done')
+    template_name = "authentication/password_change_form.html"
+    success_url = reverse_lazy("password_change_done")
 
 
 class PasswordChangeDone(PasswordChangeDoneView):
-    template_name = 'authentication/password_change_done.html'
+    template_name = "authentication/password_change_done.html"
 
 
 class UploadProfilePhoto(View):
-    template_name = 'authentication/upload_profile_photo.html'
+    template_name = "authentication/upload_profile_photo.html"
 
     def get(self, request):
         form = forms.UploadProfilePhotoForm(instance=request.user)
-        return render(request, self.template_name, context={'form': form})
+        return render(request, self.template_name, context={"form": form})
 
     def post(self, request):
         form = forms.UploadProfilePhotoForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
             return redirect(LOGIN_REDIRECT_URL)
-        return render(request, self.template_name, context={'form': form})
-
+        return render(request, self.template_name, context={"form": form})
