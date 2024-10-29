@@ -1,6 +1,6 @@
 # Projet  : Book Critique - Application Web de Gestion de Critiques de Livres
-Ce projet a été réalisé entre, septembre et octobre 2024, dans le carde de la formation [Développeur d'Application Python]
-(https://openclassrooms.com/fr/paths/879-developpeur-dapplication-python) proposé par **OpenClassrooms**; une école 
+Ce projet a été réalisé entre, septembre et octobre 2024, dans le carde de la formation
+[Développeur d'Application Python](https://openclassrooms.com/fr/paths/879-developpeur-dapplication-python) proposé par **OpenClassrooms**; une école 
 de formation à distance.
 
 # Objectif
