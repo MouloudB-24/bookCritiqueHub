@@ -9,39 +9,38 @@
     </div>
 
     <div class="subscriptions-container">
-    <!-- Section pour suivre d'autres utilisateur -->
-    <h3>Suivre d'autres utilisateurs</h3>
-    <form id="search-form" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="button" id="add-button" type="submit">Ajouter</button>
-    </form>
+        <!-- Section pour suivre d'autres utilisateur -->
+        <h3>Suivre d'autres utilisateurs</h3>
+        <form id="search-form" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="button" id="add-button" type="submit">Ajouter</button>
+        </form>
 
-    <!-- Séction pour afficher les abonnements avec un bouton 'Désabonner'-->
-    <h3>Abonnements</h3>
-        <ul class="subscription-list">
-            {% for follow in user.following.all %}
-                <li class="subscription-item">
-                    {{ follow.followed_user.username }}
-                    <form method="POST" action="{% url 'unfollow_user' follow.followed_user.id %}">
-                        {% csrf_token %}
-                        <button class="button" type="submit">Désabonner</button>
-                    </form>
-                </li>
+        <!-- Séction pour afficher les abonnements avec un bouton 'Désabonner'-->
+        <h3>Abonnements</h3>
+            <ul class="subscription-list">
+                {% for follow in user.following.all %}
+                    <li class="subscription-item">
+                        {{ follow.followed_user.username }}
+                        <form method="POST" action="{% url 'unfollow_user' follow.followed_user.id %}">
+                            {% csrf_token %}
+                            <button class="button" type="submit">Désabonner</button>
+                        </form>
+                    </li>
+                {% empty %}
+                    <p>Vous ne suivez encore personne !</p>
+                {% endfor %}
+            </ul>
+
+        <!-- Séction pour afficher les abonnés -->
+        <h3>Abonnés</h3>
+        <ul>
+            {% for follower in user.followers.all %}
+                <li>{{ follower.user.username }}</li>
             {% empty %}
-                <p>Vous ne suivez encore personne !</p>
+                <p>Vous n'avez pas encore d'abonnés !</p>
             {% endfor %}
         </ul>
-
-    <!-- Séction pour afficher les abonnés -->
-    <h3>Abonnés</h3>
-    <ul>
-        {% for follower in user.followers.all %}
-            <li>{{ follower.user.username }}</li>
-        {% empty %}
-            <p>Vous n'avez pas encore d'abonnés !</p>
-        {% endfor %}
-    </ul>
     </div>
-
 {% endblock content %}

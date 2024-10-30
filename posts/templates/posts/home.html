@@ -24,7 +24,7 @@
                 <p class="description">{{ ticket.description }}</p>
 
                 {% if ticket.image %}
-                    <img class="book-profile-image" src="{{ ticket.image.url }}" alt="{{ ticket.title }}">
+                    <img class="book-profile-image" src="{{ ticket.image.url }}" alt="{{ ticket.title }}" alt="Image de couverture de livre ou article">
                 {% endif %}
 
                 {% if ticket.reviews.exists %}

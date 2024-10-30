@@ -20,7 +20,7 @@
                 <p class="description">{{ ticket.description }}</p>
 
                 {% if ticket.image %}
-                    <img class="book-profile-image" src="{{ ticket.image.url }}" alt="{{ ticket.title }}">
+                    <img class="book-profile-image" src="{{ ticket.image.url }}" alt="{{ ticket.title }}" alt="Image de couverture de livre ou article">
                 {% endif %}
                 {% if ticket.uploader == request.user %}
                         <div class="button-container">
@@ -40,7 +40,7 @@
                 <time class="review-time" >{{ review.ticket.date_created }} - {{ review.ticket.uploader }} a publié une critique</time>
                 <h3>{{ review.ticket.title }}</h3>
                 {% if review.ticket.image %}
-                    <img class="book-profile-image" src="{{ review.ticket.image.url }}" alt="{{ ticket.title }}">
+                    <img class="book-profile-image" src="{{ review.ticket.image.url }}" alt="{{ ticket.title }}" alt="Image de couverture de livre ou article">
                 {% endif %}
                 {% if review.user == request.user %}
                             <div class="button-container">
