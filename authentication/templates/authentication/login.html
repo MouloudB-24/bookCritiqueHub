@@ -7,8 +7,9 @@
                 <p id="message">{{ message }}</p>
                 <h2>Connectez-vous</h2>
                 <form method="post">
-                    {{ form.as_p }}
                     {% csrf_token %}
+                    {{ form.as_p }}
+
                     <button class="button" type="submit">Se connecter</button>
                 </form>
             <p id="inscription-text">Pas encore membre ?</p> <a title="Lien vers le formulaire d'inscription" href="{% url 'signup' %}">Inscrivez-vous maintenant !</a>

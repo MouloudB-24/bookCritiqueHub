@@ -15,9 +15,15 @@
         {% for ticket in tickets %}
             <div class="post">
                 {% if request.user.username == ticket.uploader.username %}
-                    <time>{{ ticket.date_created }} - Vous avez publié un ticket</time>
+                    <div class="time">
+                        <p>Vous avez publié un ticket</p>
+                        <time>{{ ticket.date_created }}</time>
+                    </div>
                 {% else %}
-                    <time>{{ ticket.date_created }} - {{ ticket.uploader.username }} a publié un ticket</time>
+                    <div class="time">
+                        <p>{{ ticket.uploader.username }} a publié un ticket</p>
+                        <time>{{ ticket.date_created }}</time>
+                    </div>
                 {% endif %}
 
                 <h3>{{ ticket.title }}</h3>
@@ -30,12 +36,28 @@
                 {% if ticket.reviews.exists %}
                     {% for review in ticket.reviews.all %}
                         {% if request.user.username == review.user.username %}
-                            <time class="review-time">{{ review.date_created }} - Vous avez publié une critique</time>
+                            <div class="time">
+                                <p>Vous avez publié une critique</p>
+                                <time>{{ review.date_created }}</time>
+                            </div>
                         {% else %}
-                            <time class="review-time">{{ review.date_created }} - {{ review.user.username }} a publié une critique</time>
+                            <div class="time">
+                                <p>{{ review.user.username }} a publié une critique</p>
+                                <time>{{ review.date_created }}</time>
+                            </div>
                         {% endif %}
 
-                        <h3>{{ review.headline }} - {{ review.rating }}</h3>
+                        <h3>
+                            {{ review.headline }}
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= review.rating %}
+                                     <span class="stars">★</span>
+                                {% else %}
+                                    <span class="stars empty_stars">☆</span>
+                                {% endif %}
+                            {% endfor %}
+                        </h3>
+
                         <p class="description">{{ review.body }}</p>
 
                         {% if review.user == request.user %}

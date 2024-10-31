@@ -16,13 +16,12 @@ class HomePage(LoginRequiredMixin, View):
 
         followed_users = UserFollows.objects.filter(user=request.user).values_list(
             "followed_user", flat=True)
-        tickets = Ticket.objects.filter(
-            uploader__in=list(followed_users) + [request.user]
-        ).order_by("-date_created")
+        tickets = Ticket.objects.filter(uploader__in=list(followed_users) + [request.user]).order_by("-date_created")
         reviews = Review.objects.filter(user__in=list(followed_users) + [request.user])
         # Check if a user bas reviewed a ticket
         for ticket in tickets:
             ticket.user_has_reviewed = ticket.reviews.filter(user=request.user).exists()
+
         return render(request, self.template_name, context={"tickets": tickets, "reviews": reviews})
 
 
